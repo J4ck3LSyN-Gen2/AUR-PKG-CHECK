@@ -3,6 +3,7 @@
 
 > [!WARNING] 
 > This is a diagnostic tool for post-compromise identification, not an antivirus solution.
+> _NOTE:_ This script is pretty simple and can be ran manually via `sudo pacman -Qkk`....
 
 ## Core Functionality
 The script automates the `pacman -Qkk` verification process to detect:  
@@ -26,3 +27,10 @@ __This tool identifies anomalies, not malware. If this script reports altered or
 * **Isolate:** Remove the host from the network.  
 * **Analyze:** Examine the reported files in the log for signs of malicious injection or unauthorized persistence.  
 * **Remediate:** In a confirmed compromise scenario, the only secure path forward is a full system wipe and restoration from a known-good backup.  
+
+## Possible Quicker One-Shot
+```bash
+raw=$(curl -fsSL "https://md.archlinux.org/s/SxbqukK6IA")
+mapfile -t INFECTED < <(echo "$raw" | grep -oE '^[a-z0-9][a-z0-9_.+\-]*[a-z0-9]$' | sort -u)
+comm -12 <(pacman -Qmq | sort) <(printf "%s\n" "${INFECTED[@]}" | sort)
+```
