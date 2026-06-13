@@ -1,9 +1,9 @@
 # Overview
-`aur-pkg-integrity-test.sh` is an automated integrity verification utility designed for Arch Linux-based systems. Rather than relying on _fragile_, _signature-based malware scanning_, this tool leverages the system's native package manager (pacman) to identify unauthorized modifications to system files.
+`aur-pkg-integrity-test.sh` is an simple integrity validator designed for Arch Linux-based systems. Rather than relying on _fragile_, _signature-based malware scanning_, this tool leverages the system's native package manager (pacman) to identify unauthorized modifications to system files. All it does it wrap around the `pacman -Qkk` call and looks for things via `wc`. 
 
 > [!WARNING] 
 > This is a diagnostic tool for post-compromise identification, not an antivirus solution.
-> _NOTE:_ This script is pretty simple and can be ran manually via `sudo pacman -Qkk`....
+> _NOTE:_ This script is pretty simple and can be ran manually via `sudo pacman -Qkk`.... 
 
 ## Core Functionality
 The script automates the `pacman -Qkk` verification process to detect:  
