@@ -1,5 +1,4 @@
 #!/bin/bash
-# triage_integrity.sh - Advanced Integrity Check
 # Author: J4ck3LSyN
 if [[ $EUID -ne 0 ]]; then
    echo "[-] Must be run as root."
